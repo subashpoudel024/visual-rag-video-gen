@@ -166,7 +166,7 @@ def generate_video_from_retrieved_images(user_query):
 
 # Gradio UI
 with gr.Blocks() as demo:
-    gr.Markdown("### Text-to-Video Generation App")
+    gr.Markdown("### Video Generation By Visual RAG")
     gr.Markdown("Generate a video from natural language descriptions using image retrieval and AI-based video generation.")
     
     user_query = gr.Textbox(label="Enter your query:", placeholder="Create a short video of a bustling city street at night.")
