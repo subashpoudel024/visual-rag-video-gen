@@ -11,6 +11,20 @@ import shutil
 from diffusers import StableVideoDiffusionPipeline
 from diffusers.utils import load_image, export_to_video
 from pathlib import Path
+import requests
+
+# URL to the JSON file
+url = "https://huggingface.co/datasets/subashpoudel/image-embeddings/resolve/main/image_embeddings.json"
+
+# Download and save the file
+response = requests.get(url)
+if response.status_code == 200:
+    with open("image_embeddings.json", "wb") as file:
+        file.write(response.content)
+    print("File downloaded as image_embeddings.json")
+else:
+    print(f"Failed to download the file. HTTP status code: {response.status_code}")
+
 
 # Define paths
 EMBEDDINGS_FILE = "image_embeddings.json"
@@ -35,7 +49,7 @@ print(f"Total number of images found: {num_images}")
 # Check if the dataset contains any images
 if num_images == 0:
     print("No images found in the specified dataset path. Exiting.")
-    exit()
+    # exit()
 
 try:
     # Move all images to the output directory
@@ -47,7 +61,7 @@ try:
 
             # Move the image to the destination directory
             shutil.move(img_path, dest_path)
-            print(f"Moved: {img_name} to {output_dir}")
+            # print(f"Moved: {img_name} to {output_dir}")
         except Exception as e:
             print(f"Error moving {img_path}: {e}")
             continue
