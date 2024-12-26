@@ -1,0 +1,10 @@
+gradio
+torch
+torchvision
+torchaudio
+clip-by-openai
+faiss-cpu
+numpy
+pillow
+scikit-learn
+tqdm
